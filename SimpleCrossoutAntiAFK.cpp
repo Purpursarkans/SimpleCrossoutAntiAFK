@@ -9,6 +9,14 @@ void PressButton(HWND hwnd, int key, int PressOnMSec)
     Sleep(1000);
 }
 
+void LClickOnCoord(HWND hwnd, int x, int y)
+{
+    PostMessage(hwnd, WM_LBUTTONDOWN, MK_LBUTTON, MAKELPARAM(x, y));
+    Sleep(50);
+    PostMessage(hwnd, WM_LBUTTONUP, MK_LBUTTON, MAKELPARAM(x, y));
+    Sleep(50);
+    std::cout << "message sent..." << std::endl;
+}
 
 int main()
 {
@@ -27,6 +35,7 @@ int main()
     GetCursorPos(&P);
     HWND hwnd = WindowFromPoint(P);
     std::cout << hwnd << std::endl;
+    
     for (;;)
     {
         PressButton(hwnd, KEY_W, 500);
