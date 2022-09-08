@@ -11,7 +11,10 @@ void PressButton(HWND hwnd, int key, int PressOnMSec)
 
 
 int main()
-{   
+{
+
+    MoveWindow(GetConsoleWindow(), MOVE_CONSOLE_X, MOVE_CONSOLE_Y, CONSOLE_WIDTH, CONSOLE_HEIGHT, TRUE);
+    SetWindowPos(GetConsoleWindow(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
 
     std::cout << "Set cursor on prog" << std::endl;
     for(int i = 3; i > 0; i--)
