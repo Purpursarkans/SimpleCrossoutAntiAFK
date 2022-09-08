@@ -35,7 +35,9 @@ int main()
     GetCursorPos(&P);
     HWND hwnd = WindowFromPoint(P);
     std::cout << hwnd << std::endl;
-    
+    Beep(200,200);
+
+
     for (;;)
     {
         PressButton(hwnd, KEY_W, 500);
@@ -44,7 +46,4 @@ int main()
         PressButton(hwnd, KEY_SPACE, 500);
         Sleep(3000);
     }
-
-    
-    system("pause");
 }
