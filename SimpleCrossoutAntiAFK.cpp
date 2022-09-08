@@ -1,7 +1,4 @@
-#include <iostream>
-#include <windows.h>
-
-#define TAB 0x09
+#include "head.hpp"
 
 void PressButton(HWND hwnd, int key)
 {
