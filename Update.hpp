@@ -100,27 +100,31 @@ void update(int argc, char *argv[], std::string NameFileVersion, std::string sVe
             std::cout << "Start key = -cu" << std::endl;
             curl = "curl -o " + exeNameCopy + ".exe " + "-L " + downloadFileUrl + " && start cmd /C \"" + exeNameCopy + ".exe -uc\"";
         }
-        
+
         system(curl.c_str());
         exit(0);
     }
     else if (versionI == VERSION)
     {
         std::cout << "All update" << std::endl;
-        system("pause");
+        Sleep(5000);
         system("cls");
     }
     else if (versionI < VERSION)
     {
         std::cout << "You have a newer version" << std::endl;
-        system("pause");
+        Sleep(5000);
         system("cls");
     }
     else
     {
         std::cout << "I dont know what happens" << std::endl;
-        system("pause");
+        Sleep(5000);
         system("cls");
+    }
+    if (StartKey == "-cu")
+    {
+        system("start cmd /C\"SimpleCrossoutAntiAFK -c\"");
     }
 }
 
