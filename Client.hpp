@@ -20,7 +20,7 @@ void Client(bool lastip = false)
 
     if (!lastip)
     {
-        std::cout << "Enter ip: " << std::endl;
+        std::cout << "Enter ip: ";
         
         std::cin >> ip;
 
@@ -34,7 +34,7 @@ void Client(bool lastip = false)
         std::getline(ipFile, ip);
         ipFile.close();
     }
-    
+
     const char *cIp = ip.c_str();
     std::cout << "ip is: " << cIp << std::endl;
 
