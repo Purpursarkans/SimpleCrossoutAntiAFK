@@ -3,6 +3,20 @@
 
 #include "head.hpp"
 
+SOCKET s;
+WSADATA ws;
+SOCKADDR_IN sa;
+
+void sockInit()
+{
+    memset(&sa, 0, sizeof(sa));
+    WSAStartup(MAKEWORD(2, 2), &ws);
+    s = socket(AF_INET, SOCK_STREAM, 0);
+
+    sa.sin_family = AF_INET;
+    sa.sin_port = htons(1111);
+}
+
 int ToSec(int sec)
 {
     return sec * 1000;
@@ -31,11 +45,15 @@ void LClickOnCoord(HWND GameHwnd, int x, int y)
 
 void AntiAFK(HWND GameHwnd)
 {
-    PressButton(GameHwnd, KEY_W, 500);
-    PressButton(GameHwnd, KEY_SPACE, 500);
-    PressButton(GameHwnd, KEY_S, 500);
-    PressButton(GameHwnd, KEY_SPACE, 500);
-    Sleep(ToSec(5));
+    while(true)
+    {
+        PressButton(GameHwnd, KEY_W, 500);
+        PressButton(GameHwnd, KEY_SPACE, 500);
+        PressButton(GameHwnd, KEY_S, 500);
+        PressButton(GameHwnd, KEY_SPACE, 500);
+        Sleep(ToSec(5));
+    }
 }
+
 
 #endif

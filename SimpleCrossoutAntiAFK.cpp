@@ -3,30 +3,39 @@
 const int SOCKET_COUNTER = 100;
 int TotalSocket = 0;
 
-SOCKET s;
-WSADATA ws;
-SOCKADDR_IN sa;
-
-void sockInit()
-{
-    memset(&sa, 0, sizeof(sa));
-    WSAStartup(MAKEWORD(2, 2), &ws);
-    s = socket(AF_INET, SOCK_STREAM, 0);
-
-    sa.sin_family = AF_INET;
-    sa.sin_port = htons(1111);
-}
+#define NameFileVersion "version"
+#define UrlVersion "https://raw.githubusercontent.com/Purpursarkans/update/main/version"
+#define VERSION 1
+#define NameProgram "SimpleCrossoutAntiAFK"
 
 void close() { closesocket(s); }
 
-int main()
+int main(int argc, char *argv[])
 {
-    //MoveWindow(GetConsoleWindow(), MOVE_CONSOLE_X, MOVE_CONSOLE_Y, CONSOLE_WIDTH, CONSOLE_HEIGHT, TRUE);
-    //SetWindowPos(GetConsoleWindow(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
-
     atexit(close);
 
     sockInit();
+
+    for (int i = 0; i < argc; i++)
+    {
+        if (argv[i][0] == '-')
+        {
+            switch (argv[i][1])
+            {
+                case 'c':
+                    Client();
+                    break;
+                case 's':
+                    Server(SOCKET_COUNTER, TotalSocket);
+                    break;
+                case 'u':
+                    update(argc, argv, NameFileVersion, UrlVersion, VERSION, NameProgram);
+                    break;
+                default:
+                    std::cout << "unknown operation" << std::endl;
+            }
+        }
+    }
 
     std::cout << "select work mode:" << std::endl;
 
@@ -37,10 +46,10 @@ int main()
 
     if (c == 'c')
     {
-        Client(s, sa);
+        Client();
     }
     if (c == 's')
     {
-        Server(s, sa, SOCKET_COUNTER, TotalSocket);
+        Server(SOCKET_COUNTER, TotalSocket);
     }
 }

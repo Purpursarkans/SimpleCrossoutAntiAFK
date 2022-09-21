@@ -20,10 +20,12 @@ void CommandSend()
             {
                 system("cls");
                 std::cout << "Enter command" << std::endl
+                          << "0 - Close clients" << std::endl
                           << "1 - Ready" << std::endl
-                          << "2 - click ok(return on garage)" << std::endl
-                          << "3 - Press P" << std::endl
-                          << "4 - Press ESC" << std::endl
+                          << "2 - click error ok" << std::endl
+                          << "3 - return on garage" << std::endl
+                          << "4 - Press P" << std::endl
+                          << "5 - Press ESC" << std::endl
                           << std::endl;
                 std::cin >> SockControl;
                 for (int i = 0; i < TotalSocket2; i++)
@@ -40,7 +42,7 @@ void CommandSend()
         }
     }
 }
-void Server(SOCKET &s, SOCKADDR_IN &sa, int SOCKET_COUNTERS, int TotalSockets)
+void Server(int SOCKET_COUNTERS, int TotalSockets)
 {
     ClientSockets = new SOCKET[SOCKET_COUNTERS];
 
