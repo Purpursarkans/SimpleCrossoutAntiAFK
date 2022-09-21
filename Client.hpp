@@ -3,7 +3,7 @@
 
 #include "head.hpp"
 
-void Client()
+void Client(bool lastip = false)
 {
     HWND GameHwnd = NULL;
     while (GameHwnd == NULL)
@@ -16,11 +16,33 @@ void Client()
         }
     }
 
+    std::string ip;
+
+    if (!lastip)
+    {
+        std::cout << "Enter ip: " << std::endl;
+        
+        std::cin >> ip;
+
+        std::ofstream ipFile("lastip");
+        ipFile << ip << std::endl;
+        ipFile.close();
+    }
+    else
+    {
+        std::fstream ipFile("lastip");
+        std::getline(ipFile, ip);
+        ipFile.close();
+    }
+    
+    const char *cIp = ip.c_str();
+    std::cout << "ip is: " << cIp << std::endl;
+
     CreateThread(NULL, NULL, (LPTHREAD_START_ROUTINE)AntiAFK, (LPVOID)(GameHwnd), NULL, NULL);
 
     while(true)
     {
-        sa.sin_addr.S_un.S_addr = inet_addr("127.0.0.1");
+        sa.sin_addr.S_un.S_addr = inet_addr(cIp);
 
         if(connect(s, (sockaddr *)&sa, sizeof(sa)) != 0)
         {

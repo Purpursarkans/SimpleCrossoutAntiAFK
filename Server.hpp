@@ -24,8 +24,8 @@ void CommandSend()
                           << "1 - Update clients" << std::endl
                           << "2 - Ready" << std::endl
                           << "3 - Click error ok" << std::endl
-                          << "4 - Return on garage" << std::endl
-                          << "5 - Press P" << std::endl
+                          << "4 - Return on garage(after pvp)" << std::endl
+                          << "5 - Press P(poligon)" << std::endl
                           << "6 - Press ESC" << std::endl
                           << std::endl;
                 std::cin >> SockControl;

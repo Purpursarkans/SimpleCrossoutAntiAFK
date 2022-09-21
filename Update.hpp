@@ -126,7 +126,7 @@ void update(int argc, char *argv[], std::string NameFileVersion, std::string sVe
     }
     if (StartKey == "-cu")
     {
-        system("start cmd /C\"SimpleCrossoutAntiAFK -c\"");
+        system("start cmd /C\"SimpleCrossoutAntiAFK -lastip\"");
         exit(0);
     }
 }

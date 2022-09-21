@@ -36,6 +36,10 @@ int main(int argc, char *argv[])
         {
             Client();
         }
+        else if (temp == "-lastip")
+        {
+            Client(true);
+        }
         
     }
 
