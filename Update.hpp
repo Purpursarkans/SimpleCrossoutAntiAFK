@@ -80,8 +80,6 @@ void update(int argc, char *argv[], std::string NameFileVersion, std::string sVe
 
     rFile.close();
 
-    while (remove(NameFileVersion.c_str())) { }
-
     std::cout << "Last version: " << versionI << std::endl;
     std::cout << "Total version: " << VERSION << std::endl;
 
