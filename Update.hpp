@@ -30,7 +30,6 @@ void update(int argc, char *argv[], std::string NameFileVersion, std::string sVe
         {
             std::string remove_ = exeName + ".exe";
             while (remove(remove_.c_str())) { }
-
             std::string copy_ = "copy " + exeNameCopy + ".exe " + exeName + ".exe /Y";
 
             std::cout << copy_ << std::endl;
@@ -44,27 +43,32 @@ void update(int argc, char *argv[], std::string NameFileVersion, std::string sVe
         }
         else if (temp == "-d")
         {
+            std::string start = "start cmd /C \"" + exeName + ".exe -d2\"";
+
+            system(start.c_str());
+            exit(0);
+        }
+        else if (temp == "-d2")
+        {
             std::string remove_ = exeNameCopy + ".exe";
             while (remove(remove_.c_str())) { }
-
             std::string start = "start " + exeName + ".exe";
-
-            std::cout << start << std::endl;
-            system("pause");
 
             system(start.c_str());
             exit(0);
         }
         else if (temp == "-dc")
         {
+            std::string start = "start cmd /C \"" + exeName + ".exe -dc2\"";
+            system(start.c_str());
+            exit(0);
+        }
+        else if (temp == "-dc2")
+        {
             std::string remove_ = exeNameCopy + ".exe";
             while (remove(remove_.c_str())) { }
 
             std::string start = "start cmd /C \"" + exeName + ".exe -c\"";
-
-            std::cout << start << std::endl;
-            system("pause");
-
             system(start.c_str());
             exit(0);
         }
@@ -92,12 +96,12 @@ void update(int argc, char *argv[], std::string NameFileVersion, std::string sVe
 
         std::string curl;
 
-        if(StartKey == "")
+        if (StartKey == "")
         {
             std::cout << "Start key = 0" << std::endl;
             curl = "curl -o " + exeNameCopy + ".exe " + "-L " + downloadFileUrl + " && start cmd /C \"" + exeNameCopy + ".exe -u\"";
         }
-        else if(StartKey == "-cu")
+        else if (StartKey == "-cu")
         {
             std::cout << "Start key = -cu" << std::endl;
             curl = "curl -o " + exeNameCopy + ".exe " + "-L " + downloadFileUrl + " && start cmd /C \"" + exeNameCopy + ".exe -uc\"";
