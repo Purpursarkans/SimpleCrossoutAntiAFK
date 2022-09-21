@@ -13,6 +13,7 @@
                 "-static",
                 "-Os",
                 "-s",
+                "-lws2_32"
             ],
             "options": {
                 "cwd": "D:\\msys64\\mingw64\\bin"

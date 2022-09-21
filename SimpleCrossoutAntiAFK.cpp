@@ -1,49 +1,46 @@
 #include "head.hpp"
 
-void PressButton(HWND hwnd, int key, int PressOnMSec)
+const int SOCKET_COUNTER = 100;
+int TotalSocket = 0;
+
+SOCKET s;
+WSADATA ws;
+SOCKADDR_IN sa;
+
+void sockInit()
 {
-    Beep(100,100);
-    PostMessage(hwnd, WM_KEYDOWN, key, 0);
-    Sleep(PressOnMSec);
-    PostMessage(hwnd, WM_KEYUP, key, 0);
-    Sleep(1000);
+    memset(&sa, 0, sizeof(sa));
+    WSAStartup(MAKEWORD(2, 2), &ws);
+    s = socket(AF_INET, SOCK_STREAM, 0);
+
+    sa.sin_family = AF_INET;
+    sa.sin_port = htons(1111);
 }
 
-void LClickOnCoord(HWND hwnd, int x, int y)
-{
-    PostMessage(hwnd, WM_LBUTTONDOWN, MK_LBUTTON, MAKELPARAM(x, y));
-    Sleep(50);
-    PostMessage(hwnd, WM_LBUTTONUP, MK_LBUTTON, MAKELPARAM(x, y));
-    Sleep(50);
-    std::cout << "message sent..." << std::endl;
-}
+void close() { closesocket(s); }
 
 int main()
 {
+    //MoveWindow(GetConsoleWindow(), MOVE_CONSOLE_X, MOVE_CONSOLE_Y, CONSOLE_WIDTH, CONSOLE_HEIGHT, TRUE);
+    //SetWindowPos(GetConsoleWindow(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
 
-    MoveWindow(GetConsoleWindow(), MOVE_CONSOLE_X, MOVE_CONSOLE_Y, CONSOLE_WIDTH, CONSOLE_HEIGHT, TRUE);
-    SetWindowPos(GetConsoleWindow(), HWND_TOPMOST, 0, 0, 0, 0, SWP_NOMOVE | SWP_NOSIZE);
+    atexit(close);
 
-    std::cout << "Set cursor on prog" << std::endl;
-    for(int i = 3; i > 0; i--)
+    sockInit();
+
+    std::cout << "select work mode:" << std::endl;
+
+    char c;
+    std::cout << "s - server\nc - client" << std::endl;
+    std::cout << ">> ";
+    std::cin >> c;
+
+    if (c == 'c')
     {
-        std::cout << i << " sec sleep" << std::endl;
-        Sleep(1000);
+        Client(s, sa);
     }
-    
-    POINT P;
-    GetCursorPos(&P);
-    HWND hwnd = WindowFromPoint(P);
-    std::cout << hwnd << std::endl;
-    Beep(200,200);
-
-
-    for (;;)
+    if (c == 's')
     {
-        PressButton(hwnd, KEY_W, 500);
-        PressButton(hwnd, KEY_SPACE, 500);
-        PressButton(hwnd, KEY_S, 500);
-        PressButton(hwnd, KEY_SPACE, 500);
-        Sleep(3000);
+        Server(s, sa, SOCKET_COUNTER, TotalSocket);
     }
 }
