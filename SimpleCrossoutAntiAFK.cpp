@@ -11,25 +11,30 @@ int main(int argc, char *argv[])
 
     sockInit();
 
+    std::cout << "argc " << argc << std::endl;
+
     for (int i = 0; i < argc; i++)
     {
         std::string temp = argv[i];
-        if (temp == "-u")
+        std::cout << temp << std::endl;
+        system("pause");
+        if (temp == "-up" || temp == "-u" || temp == "-uc" || temp == "-d" || temp == "-dc")
         {
             update(argc, argv, NameFileVersion, UrlVersion, VERSION, NameProgram);
         }
-        if (temp == "-s")
-        {
-            Server(SOCKET_COUNTER, TotalSocket);
-        }
-        if (temp == "-c")
-        {
-            Client();
-        }
-        if (temp == "-uc")
+        else if (temp == "-cu")
         {
             update(argc, argv, NameFileVersion, UrlVersion, VERSION, NameProgram, temp);
         }
+        else if (temp == "-s")
+        {
+            Server(SOCKET_COUNTER, TotalSocket);
+        }
+        else if (temp == "-c")
+        {
+            Client();
+        }
+        
     }
 
     std::cout << "select work mode:" << std::endl;

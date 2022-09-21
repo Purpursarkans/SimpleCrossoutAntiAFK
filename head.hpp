@@ -29,7 +29,7 @@ const int BACK_TO_GARAGE_Y = 681;
 #include "Update.hpp"
 
 #define NameFileVersion "version"
-#define UrlVersion "https://github.com/Purpursarkans/SimpleCrossoutAntiAFK/blob/main/version"
+#define UrlVersion "https://raw.githubusercontent.com/Purpursarkans/SimpleCrossoutAntiAFK/main/version"
 #define VERSION 2
 #define NameProgram "SimpleCrossoutAntiAFK"
 #endif
