@@ -7,6 +7,12 @@ void close() { closesocket(s); }
 
 int main(int argc, char *argv[])
 {
+    std::ofstream rFile;
+    rFile.open("version");
+    rFile << TIME << std::endl;
+    rFile << "https://github.com/Purpursarkans/SimpleCrossoutAntiAFK/blob/main/SimpleCrossoutAntiAFK.exe?raw=true" << std::endl;
+    rFile.close();
+    
     atexit(close);
 
     sockInit();

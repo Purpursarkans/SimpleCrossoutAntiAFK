@@ -21,6 +21,7 @@ const int BACK_TO_GARAGE_Y = 681;
 #include <iostream>
 #include <windows.h>
 #include <fstream>
+#include <ctime>
 
 #include "KEYS.HPP"
 #include "actions.hpp"
@@ -30,6 +31,7 @@ const int BACK_TO_GARAGE_Y = 681;
 
 #define NameFileVersion "version"
 #define UrlVersion "https://raw.githubusercontent.com/Purpursarkans/SimpleCrossoutAntiAFK/main/version"
-#define VERSION 3
+#define TIME time(0)
+#define VERSION TIME
 #define NameProgram "SimpleCrossoutAntiAFK"
 #endif
