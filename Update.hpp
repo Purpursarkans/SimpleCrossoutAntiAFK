@@ -3,7 +3,7 @@
 
 #include "head.hpp"
 
-void update(int argc, char *argv[], std::string NameFileVersion, std::string sVersionUrl, int VERSION, std::string exeName)
+void update(int argc, char *argv[], std::string NameFileVersion, std::string sVersionUrl, int VERSION, std::string exeName, std::string StartKey = "")
 {
     static std::string exeNameCopy = exeName + "2";
 
@@ -19,12 +19,32 @@ void update(int argc, char *argv[], std::string NameFileVersion, std::string sVe
             system(start.c_str());
             exit(0);
         }
+        else if (temp == "-uc")
+        {
+            std::string copy_ = "copy " + exeNameCopy + ".exe " + exeName + ".exe /Y";
+            system(copy_.c_str());
+
+            std::string start = "start cmd /C \"" + exeName + ".exe -dc\"";
+            system(start.c_str());
+            exit(0);
+        }
         else if (temp == "-d")
         {
             std::string remove_ = exeNameCopy + ".exe";
             while (remove(remove_.c_str())) { }
-            
+
             std::string start = "start " + exeName + ".exe";
+            system(start.c_str());
+            exit(0);
+        }
+        else if (temp == "-dc")
+        {
+            std::string remove_ = exeNameCopy + ".exe";
+            while (remove(remove_.c_str()))
+            {
+            }
+
+            std::string start = "start cmd /C \"" + exeName + ".exe -c\"";
             system(start.c_str());
             exit(0);
         }

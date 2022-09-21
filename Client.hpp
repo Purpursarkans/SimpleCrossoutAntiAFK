@@ -12,7 +12,7 @@ void Client()
         GameHwnd = FindWindowA("TargemWindow", NULL);
         if (GameHwnd == NULL)
         {
-            Sleep(ToSec(1));
+            Sleep(ToSec(3));
         }
     }
 
@@ -49,18 +49,21 @@ void Client()
                     exit(0);
                     break;
                 case 1:
-                    LClickOnCoord(GameHwnd, READY_X, READY_Y);
+                    system("start SimpleCrossoutAntiAFK -uc");
                     break;
                 case 2:
-                    LClickOnCoord(GameHwnd, ERROR_OK_X, ERROR_OK_Y);
+                    LClickOnCoord(GameHwnd, READY_X, READY_Y);
                     break;
                 case 3:
-                    LClickOnCoord(GameHwnd, BACK_TO_GARAGE_X, BACK_TO_GARAGE_Y);
+                    LClickOnCoord(GameHwnd, ERROR_OK_X, ERROR_OK_Y);
                     break;
                 case 4:
-                    PressButton(GameHwnd, KEY_P, 100);
+                    LClickOnCoord(GameHwnd, BACK_TO_GARAGE_X, BACK_TO_GARAGE_Y);
                     break;
                 case 5:
+                    PressButton(GameHwnd, KEY_P, 100);
+                    break;
+                case 6:
                     PressButton(GameHwnd, KEY_ESC, 100);
                     break;
                 default:
