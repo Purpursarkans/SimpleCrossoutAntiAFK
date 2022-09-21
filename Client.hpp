@@ -91,6 +91,7 @@ void Client(bool lastip = false)
                     break;
                 case 7:
                     LClickOnCoord(GameHwnd, PARTY_ACCEPT_X, PARTY_ACCEPT_Y);
+                    break;
                 default:
                     std::cout << "command error" << std::endl;
             }

@@ -34,7 +34,7 @@ const int PARTY_ACCEPT_Y = 102;
 
 #define NameFileVersion "version"
 #define UrlVersion "https://raw.githubusercontent.com/Purpursarkans/SimpleCrossoutAntiAFK/main/version"
-#define TIME 7
+#define TIME 8
 #define VERSION TIME
 #define NameProgram "SimpleCrossoutAntiAFK"
 #endif
