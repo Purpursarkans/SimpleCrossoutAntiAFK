@@ -11,13 +11,9 @@ int main(int argc, char *argv[])
 
     sockInit();
 
-    std::cout << "argc " << argc << std::endl;
-
     for (int i = 0; i < argc; i++)
     {
         std::string temp = argv[i];
-        std::cout << temp << std::endl;
-        system("pause");
         if (temp == "-up" || temp == "-u" || temp == "-uc" || temp == "-d" || temp == "-d2" || temp == "-dc" || temp == "-dc2")
         {
             update(argc, argv, NameFileVersion, UrlVersion, VERSION, NameProgram);

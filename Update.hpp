@@ -14,11 +14,8 @@ void update(int argc, char *argv[], std::string NameFileVersion, std::string sVe
         {
             std::string remove_ = exeName + ".exe";
             while (remove(remove_.c_str())) { }
-            
-            std::string copy_ = "copy " + exeNameCopy + ".exe " + exeName + ".exe /Y";
 
-            std::cout << copy_ << std::endl;
-            system("pause");
+            std::string copy_ = "copy " + exeNameCopy + ".exe " + exeName + ".exe /Y";
 
             system(copy_.c_str());
 
@@ -31,9 +28,6 @@ void update(int argc, char *argv[], std::string NameFileVersion, std::string sVe
             std::string remove_ = exeName + ".exe";
             while (remove(remove_.c_str())) { }
             std::string copy_ = "copy " + exeNameCopy + ".exe " + exeName + ".exe /Y";
-
-            std::cout << copy_ << std::endl;
-            system("pause");
 
             system(copy_.c_str());
 
@@ -106,9 +100,7 @@ void update(int argc, char *argv[], std::string NameFileVersion, std::string sVe
             std::cout << "Start key = -cu" << std::endl;
             curl = "curl -o " + exeNameCopy + ".exe " + "-L " + downloadFileUrl + " && start cmd /C \"" + exeNameCopy + ".exe -uc\"";
         }
-
-        std::cout << curl << std::endl;
-        system("pause");
+        
         system(curl.c_str());
         exit(0);
     }
