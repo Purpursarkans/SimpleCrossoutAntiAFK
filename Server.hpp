@@ -27,6 +27,7 @@ void CommandSend()
                           << "4 - Return on garage(after pvp)" << std::endl
                           << "5 - Press P(poligon)" << std::endl
                           << "6 - Press ESC" << std::endl
+                          << "7 - Party accept" << std::endl
                           << std::endl;
                 std::cin >> SockControl;
                 for (int i = 0; i < TotalSocket2; i++)

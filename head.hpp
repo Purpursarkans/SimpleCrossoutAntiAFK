@@ -18,6 +18,9 @@ const int ERROR_OK_Y = 419;
 const int BACK_TO_GARAGE_X = 898;
 const int BACK_TO_GARAGE_Y = 681;
 
+const int PARTY_ACCEPT_X = 264;
+const int PARTY_ACCEPT_Y = 102;
+
 #include <iostream>
 #include <windows.h>
 #include <fstream>
@@ -31,7 +34,7 @@ const int BACK_TO_GARAGE_Y = 681;
 
 #define NameFileVersion "version"
 #define UrlVersion "https://raw.githubusercontent.com/Purpursarkans/SimpleCrossoutAntiAFK/main/version"
-#define TIME 6
+#define TIME 7
 #define VERSION TIME
 #define NameProgram "SimpleCrossoutAntiAFK"
 #endif
