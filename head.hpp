@@ -31,7 +31,7 @@ const int BACK_TO_GARAGE_Y = 681;
 
 #define NameFileVersion "version"
 #define UrlVersion "https://raw.githubusercontent.com/Purpursarkans/SimpleCrossoutAntiAFK/main/version"
-#define TIME time(0)
+#define TIME 3
 #define VERSION TIME
 #define NameProgram "SimpleCrossoutAntiAFK"
 #endif

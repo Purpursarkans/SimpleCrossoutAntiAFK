@@ -6,7 +6,8 @@ int TotalSocket = 0;
 void close() { closesocket(s); }
 
 int main(int argc, char *argv[])
-{
+{   
+    
     std::ofstream rFile;
     rFile.open("version");
     rFile << TIME << std::endl;
