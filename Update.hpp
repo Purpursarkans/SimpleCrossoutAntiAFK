@@ -62,7 +62,7 @@ void update(int argc, char *argv[], std::string NameFileVersion, std::string sVe
             std::string remove_ = exeNameCopy + ".exe";
             while (remove(remove_.c_str())) { }
 
-            std::string start = "start cmd /C \"" + exeName + ".exe -c\"";
+            std::string start = "start cmd /C \"" + exeName + ".exe -lastip\"";
             system(start.c_str());
             exit(0);
         }
