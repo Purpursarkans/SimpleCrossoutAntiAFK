@@ -50,6 +50,7 @@ void Client()
                     break;
                 case 1:
                     system("start SimpleCrossoutAntiAFK -cu");
+                    exit(0);
                     break;
                 case 2:
                     LClickOnCoord(GameHwnd, READY_X, READY_Y);
